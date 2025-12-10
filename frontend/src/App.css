@@ -1,0 +1,21 @@
+*{
+  color: #ececec;
+  /* font-family: "Montserrat", sans-serif; */
+  /* font-family: "Roboto", sans-serif; */
+  /* font-family: 'Roboto', 'Open Sans', 'Helvetica Neue', sans-serif; */
+  font-family: "Inter", sans-serif;
+}
+
+body{
+  margin: 0;
+  padding: 0;
+  
+}
+
+.app{
+  /* background-color: #171717;
+   */
+   background: #1E1E1E;
+background: linear-gradient(linear-gradient(1deg, rgb(26 26 26) 3%, rgba(23, 23, 23, 1) 100%));
+  display: flex;
+}

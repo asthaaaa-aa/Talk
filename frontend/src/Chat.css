@@ -1,0 +1,57 @@
+.chat-messages{
+    width: 60%;
+    overflow-y: auto; 
+    padding: 8rem;
+    font-size: 1rem;
+}
+
+.chat-messages::-webkit-scrollbar {
+    width: 8px; /* thinner scrollbar */
+}
+
+.chat-messages::-webkit-scrollbar-track {
+    background: #1e1e1e; /* dark background to blend with your theme */
+    border-radius: 10px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+    background: #444; /* scrollbar color */
+    border-radius: 10px;
+    transition: background 0.3s ease;
+}
+
+.chat-messages::-webkit-scrollbar-thumb:hover {
+    background: #666; /* lighter shade on hover */
+}
+
+p{
+    all: unset;
+}
+
+.userDiv{
+    
+    display: flex;
+    justify-content: flex-end;
+    margin:  15px 0;
+
+}
+
+.userMsg{
+    background-color: #323232;
+    padding: 10px 15px;
+    border-radius: 10px 0px 10px 10px;
+    max-width: 60%;
+
+}
+
+.assistantDiv{
+
+    text-align: left;
+    max-width: 100%;
+
+
+}
+
+.assistantMsg{
+
+}

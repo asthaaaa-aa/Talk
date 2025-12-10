@@ -1,0 +1,89 @@
+.sidebar{
+    background-color: #121212;
+    color: #b4b4b4;
+    height: 100vh;
+    width: 20vw;
+    padding: 30px 20px;
+
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    overflow-y: auto;
+
+    font-size: 0.9rem;
+
+    /* justify-content: ce; */
+}
+
+
+
+
+.sidebar::-webkit-scrollbar {
+    width: 8px; /* thinner scrollbar */
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: #121212; /* dark background to blend with your theme */
+    border-radius: 10px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: #444; /* scrollbar color */
+    border-radius: 10px;
+    transition: background 0.3s ease;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+    background: #696666; /* lighter shade on hover */
+}
+
+
+
+.logo{
+    width: 25px;
+}
+
+.threadHistory{
+    list-style-type: none;
+    padding: 0;
+    margin-top: 25px;
+    text-transform: capitalize;
+}
+
+.threadHistory li {
+    padding: 10px 15px;
+    border-radius: 30px;
+}
+.threadHistory li:hover {
+    /* padding: 10px 0 ; */
+    background-color: rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+}
+
+button{
+    all : unset;
+    display: flex;
+    align-items: center;
+    /* justify-content: space-around; */
+    /* gap: 1rem; */
+    background-color: #1a1a1a;
+    
+    text-decoration: none;
+    cursor: pointer;
+    width: 80%;
+
+    padding: 10px;
+    border-radius: 25px;
+    box-sizing: border-box;
+
+    position: relative;
+    left: 0;
+    justify-content: center;
+    margin-top: 30px;
+    margin: 0px auto;
+
+}
+
+button:hover{
+    background-color: rgba(255, 255, 255, 0.1);
+}
