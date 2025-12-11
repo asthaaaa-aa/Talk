@@ -82,26 +82,26 @@ router.post("/chat" , async(req, res) => {
         if(!thread){
             thread = new Thread({
                 threadId,
-                title : message ,
+                title : message,
                 messages : [{
                     role : "user",
-                    content : message
+                    content: message
                 }]
             })
 
         }
         else{
             thread.messages.push({
-                    role : "user",
-                    content : message
-                })
+                role : "user",
+                content: message
+            })
         }
 
-        const assistantReply = await getGoogleAIAPIResponse(message);
-
+        const assistantReply = await getGoogleAIAPIResponse(thread.messages);
+        console.log("Thread.messages -----------" ,thread.messages)
         thread.messages.push({
             role : "assistant",
-            content : assistantReply
+            content: assistantReply || "No content returned"
         });
 
         thread.updatedAt = Date.now();

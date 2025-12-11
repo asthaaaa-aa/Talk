@@ -30,8 +30,8 @@ export default function ChatWindow() {
             setReply(data.reply);
             
         } catch (err) {
-            // res.status(500).json({error : err.message});
-            console.log(err)
+            res.status(500).json({error : err.message});
+            // console.log(err)
         }
         setLoading(false);
 
