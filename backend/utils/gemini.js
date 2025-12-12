@@ -9,7 +9,25 @@ const getGoogleAIAPIResponse = async(messages) => {
             parts: [{ text }]
         };
     });
-    contents.slice(-20) //to only get context of last 20 msgs
+    // contents.slice(-20) //to only get context of last 20 msgs
+// ------------
+//     const bodyOfGemini = {
+//     contents,
+//     config: {
+//       systemInstruction: {
+//         parts: [
+//           {
+//             text: `
+// You are a mental health assistant. You hear the troubles people have and provide support and care to them.
+//             `,
+//           },
+//         ],
+//       },
+//     },
+//   };
+
+  //------
+
 
     const options = {
         method : "POST",
@@ -17,11 +35,20 @@ const getGoogleAIAPIResponse = async(messages) => {
             "Content-Type": "application/json",
             "x-goog-api-key" : `${process.env.GOOGLE_API_KEY}`
         },
-        body: JSON.stringify({ contents })
+        body: JSON.stringify({ 
+            contents: contents,
+            systemInstruction: {
+                parts: [
+                    {
+                        text: `You are talk, a mental health assistant. You hear the troubles people have and provide support and care to them.`
+                    }
+                ]
+            }
+        })
     }
 
     try{
-        console.log("contents -----------" , contents)
+        // console.log("contents -----------" , contents)
         const response = await fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent", options);
 
         const data = await response.json();
@@ -36,7 +63,7 @@ const getGoogleAIAPIResponse = async(messages) => {
             console.warn("No text in Gemini response:", data);
             return null;
         }
-        console.log("Data-------", data)
+        // console.log("Data-------", data)
         console.log("\nText ------", text)
         return text;
     }

@@ -1,6 +1,7 @@
-.sidebar{
-    background-color: #121212;
-    color: #b4b4b4;
+/* SIDEBAR */
+.sidebar {
+    background-color: #dfded9; /* light beige background */
+    color: #2b2b2b; /* dark text for contrast */
     height: 100vh;
     width: 20vw;
     padding: 30px 20px;
@@ -11,39 +12,35 @@
     overflow-y: auto;
 
     font-size: 0.9rem;
-
-    /* justify-content: ce; */
 }
 
-
-
-
+/* SCROLLBAR */
 .sidebar::-webkit-scrollbar {
-    width: 8px; /* thinner scrollbar */
+    width: 2px;
 }
 
 .sidebar::-webkit-scrollbar-track {
-    background: #121212; /* dark background to blend with your theme */
+    background: #d4d2cb; /* lighter neutral track */
     border-radius: 10px;
 }
 
 .sidebar::-webkit-scrollbar-thumb {
-    background: #444; /* scrollbar color */
+    background: #8a877f; /* medium gray-brown thumb */
     border-radius: 10px;
     transition: background 0.3s ease;
 }
 
 .sidebar::-webkit-scrollbar-thumb:hover {
-    background: #696666; /* lighter shade on hover */
+    background: #6e6b64; /* slightly darker on hover */
 }
 
-
-
-.logo{
+/* LOGO */
+.logo {
     width: 25px;
 }
 
-.threadHistory{
+/* THREAD HISTORY */
+.threadHistory {
     list-style-type: none;
     padding: 0;
     margin-top: 25px;
@@ -53,37 +50,42 @@
 .threadHistory li {
     padding: 10px 15px;
     border-radius: 30px;
+    transition: background-color 0.2s ease;
 }
+
 .threadHistory li:hover {
-    /* padding: 10px 0 ; */
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(0, 0, 0, 0.1); /* subtle hover */
     cursor: pointer;
 }
 
-button{
-    all : unset;
+/* BUTTON */
+button {
+    all: unset;
     display: flex;
     align-items: center;
-    /* justify-content: space-around; */
-    /* gap: 1rem; */
-    background-color: #1a1a1a;
-    
-    text-decoration: none;
-    cursor: pointer;
-    width: 80%;
+    justify-content: center;
 
+    background-color: #d4d2cb; /* light button */
+    color: #2b2b2b;
+    cursor: pointer;
+    gap: 5px;
+
+    width: 80%;
     padding: 10px;
     border-radius: 25px;
     box-sizing: border-box;
 
-    position: relative;
-    left: 0;
-    justify-content: center;
-    margin-top: 30px;
-    margin: 0px auto;
-
+    margin: 0 auto 0 auto;
+    transition: background-color 0.2s ease;
 }
 
-button:hover{
-    background-color: rgba(255, 255, 255, 0.1);
+button:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.plus-icon{
+    color: #ecd6cd;
+    background-color: #c15f3c;
+    padding:  5px 3px;
+    border-radius: 50%;
 }

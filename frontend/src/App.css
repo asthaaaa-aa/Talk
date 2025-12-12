@@ -1,9 +1,11 @@
 *{
-  color: #ececec;
+  color: #131212;
   /* font-family: "Montserrat", sans-serif; */
   /* font-family: "Roboto", sans-serif; */
   /* font-family: 'Roboto', 'Open Sans', 'Helvetica Neue', sans-serif; */
-  font-family: "Inter", sans-serif;
+  /* font-family: "Inter", sans-serif; */
+  font-family: "Jost", sans-serif;
+  /* font-family: "Roboto Flex", sans-serif; */
 }
 
 body{
@@ -15,7 +17,7 @@ body{
 .app{
   /* background-color: #171717;
    */
-   background: #1E1E1E;
+   background: #f4f3ee;
 background: linear-gradient(linear-gradient(1deg, rgb(26 26 26) 3%, rgba(23, 23, 23, 1) 100%));
   display: flex;
 }

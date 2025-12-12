@@ -6,7 +6,7 @@ import {BounceLoader, RingLoader, ScaleLoader} from "react-spinners"
 
 
 export default function ChatWindow() {
-    const { prompt, setPrompt, reply, setReply, currthreadId, prevMsgs, setPrevMsgs } = useContext(MyContext);
+    const { newChat, setNewChat, prompt, setPrompt, reply, setReply, currthreadId, prevMsgs, setPrevMsgs } = useContext(MyContext);
     const [loading, setLoading] = useState(false)
 
     const getReply = async () => {
@@ -24,6 +24,7 @@ export default function ChatWindow() {
 
         try {
             setLoading(true);
+            
 
             let response = await fetch("http://localhost:3000/api/chat", options);
             let data = await response.json();
@@ -34,6 +35,7 @@ export default function ChatWindow() {
             // console.log(err)
         }
         setLoading(false);
+        setNewChat(false)
 
     }
 
@@ -61,8 +63,10 @@ export default function ChatWindow() {
         <nav className="chat-window-navbar">
             {/* <img src="src/assets/Google_Gemini_logo.svg.png" alt="" className="logo-chatWindow"/>
              */}
-             <p>Talk.</p>
-            <i className="fa-solid fa-circle-user user-icon"  ></i>
+             <p className="logo-main">Talk.</p>
+            {/* <i className="fa-solid fa-circle-user user-icon"  ></i> */}
+            {/* <i className="fa-light fa-circle-user"></i> */}
+            <i class="fa-regular fa-circle-user user-icon"></i>
         </nav>
 
     
@@ -76,10 +80,10 @@ export default function ChatWindow() {
         <div className="bottom">
         <div className="input-box">
             <input type="text" placeholder="Start a conversation..." className="chat-input"  value={prompt}  onChange={ (e) => setPrompt(e.target.value) } onKeyDown={(e) => e.key==="Enter"?getReply() : ""} />
-            <div className="btn-submit"><i className="fa-solid fa-paper-plane send-icon" onClick={getReply}></i></div>
+            <div className="btn-submit"><i className="send fa-solid fa-paper-plane send-icon" onClick={getReply}></i></div>
         </div>
 
-        <div className="footer">Gemini can make mistakes, so double-check it</div>
+        <p className="footer">Talk - Always there to listen.</p>
         </div>
         
 

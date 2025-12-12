@@ -33,11 +33,12 @@ export default function Sidebar() {
 
 
   const createNewChat = () => {
+    setThreadId(uuidv1());
     setNewChat(true);
     setPrompt("");
     setReply(null);
     setPrevMsgs([]);
-    setThreadId(uuidv1());
+    
   }
 
 
@@ -46,7 +47,7 @@ export default function Sidebar() {
     setThreadId(newthreadId);
 
     try {
-      const response = await fetch(`http://localhost:3000/api/threads/${currthreadId}`);
+      const response = await fetch(`http://localhost:3000/api/threads/${newthreadId}`);
       const data = await response.json();
       setPrevMsgs(data);
       setNewChat(false)
@@ -54,7 +55,7 @@ export default function Sidebar() {
       setReply(null);
       
     } catch (err) {
-      
+      console.log(err)
     }
 
   }
@@ -63,13 +64,13 @@ export default function Sidebar() {
         {/* <img src="src/assets/sidebarLogo.webp" alt="" className="logo"/> */}
         <button onClick={createNewChat}>
             {/* <i class="fa-solid fa-wand-sparkles"></i> */}
-            <i className="fa-solid fa-plus"></i>
+            <i className="fa-solid fa-plus plus-icon"></i>
             New Chat
         </button>
         
 
         <ul className="threadHistory">
-          {allThreads?.map((thread,idx) => <li key={idx} >{thread.title}</li>)}
+          {allThreads?.map((thread,idx) => <li key={idx} onClick={()=>changeThread(thread.threadId)}>{thread.title}</li>)}
         </ul>
     </section>
   )
