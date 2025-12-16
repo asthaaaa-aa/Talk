@@ -1,0 +1,37 @@
+.sentimentBar{
+    width: 30%;
+    background-color: #ededec;
+    padding: 1.2rem;
+    box-sizing: border-box;
+    height: 100vh;
+    overflow-y: scroll;
+}
+
+.sentimentBar::-webkit-scrollbar {
+    width: 2px;
+}
+
+.sentimentBar::-webkit-scrollbar-track {
+    background: #d4d2cb; /* lighter neutral track */
+    border-radius: 10px;
+}
+
+.sentimentBar::-webkit-scrollbar-thumb {
+    background: #8a877f; /* medium gray-brown thumb */
+    border-radius: 10px;
+    transition: background 0.3s ease;
+}
+
+.sentimentBar::-webkit-scrollbar-thumb:hover {
+    background: #6e6b64; /* slightly darker on hover */
+}
+
+.main-headings{
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.prediction{
+    font-weight: 500;
+    text-decoration: wavy;
+}

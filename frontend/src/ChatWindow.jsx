@@ -1,93 +1,146 @@
-import "./ChatWindow.css"
-import Chat from "./Chat.jsx"
+import "./ChatWindow.css";
+import Chat from "./Chat.jsx";
 import MyContext from "./MyContext.jsx";
 import { useContext, useEffect, useState } from "react";
-import {BounceLoader, RingLoader, ScaleLoader} from "react-spinners"
-
+import {
+  BounceLoader,
+  RingLoader,
+  ScaleLoader,
+  PulseLoader,
+} from "react-spinners";
+import SentimentBar from "./SentimentBar.jsx";
 
 export default function ChatWindow() {
-    const { newChat, setNewChat, prompt, setPrompt, reply, setReply, currthreadId, prevMsgs, setPrevMsgs } = useContext(MyContext);
-    const [loading, setLoading] = useState(false)
+  const {
+    newChat,
+    setNewChat,
+    prompt,
+    setPrompt,
+    reply,
+    setReply,
+    currthreadId,
+    prevMsgs,
+    setPrevMsgs,
+    sentiment,
+    setSentiment,
+    openSentiment,
+    setOpenSentiment,
+  } = useContext(MyContext);
+  const [loading, setLoading] = useState(false);
 
-    const getReply = async () => {
-        const options = {
-            method : "POST",
-            headers : {
-                "Content-Type": "application/json"
-            }, 
+  const getReply = async () => {
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
 
-            body : JSON.stringify({
-                message : prompt,
-                threadId : currthreadId
-            })
-        }
+      body: JSON.stringify({
+        message: prompt,
+        threadId: currthreadId,
+      }),
+    };
 
-        try {
-            setLoading(true);
-            
+    try {
+      setLoading(true);
 
-            let response = await fetch("http://localhost:3000/api/chat", options);
-            let data = await response.json();
-            setReply(data.reply);
-            
-        } catch (err) {
-            res.status(500).json({error : err.message});
-            // console.log(err)
-        }
-        setLoading(false);
-        setNewChat(false)
-
+      let response = await fetch("http://localhost:3000/api/chat", options);
+      let data = await response.json();
+      setReply(data.reply);
+    } catch (err) {
+      console.error(err);
     }
+    setLoading(false);
+    setNewChat(false);
+  };
 
-    useEffect(() => {
-        if(prompt && reply){
-            setPrevMsgs( prevMsgs => (
-                [...prevMsgs, {
-                    role : "user",
-                    content : prompt
-                }, {
-                    role : "assistant",
-                    content : reply
-                }]
-            ))
+  useEffect(() => {
+    if (prompt && reply) {
+      setPrevMsgs((prevMsgs) => [
+        ...prevMsgs,
+        {
+          role: "user",
+          content: prompt,
+        },
+        {
+          role: "assistant",
+          content: reply,
+        },
+      ]);
+    }
+    setPrompt("");
+  }, [reply]);
+
+  const getSentimentScore = async () => {
+    try {
+      setOpenSentiment(!openSentiment);
+      const scores = await fetch(
+        `http://localhost:3000/api/predict/${currthreadId}`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
         }
-        setPrompt("");
-        
-
-    }, [reply])
-
+      );
+      const data = await scores.json();
+      // setSentiment(data)
+      console.log(data);
+      setSentiment(data);
+    } catch (e) {
+      console.log(e);
+      // res.json(e);
+    }
+  };
 
   return (
-    <div className="chat-window">
+    <>
+      <div className="chat-window">
         {/* Navbar */}
         <nav className="chat-window-navbar">
-            {/* <img src="src/assets/Google_Gemini_logo.svg.png" alt="" className="logo-chatWindow"/>
-             */}
-             <p className="logo-main">Talk.</p>
-            {/* <i className="fa-solid fa-circle-user user-icon"  ></i> */}
-            {/* <i className="fa-light fa-circle-user"></i> */}
-            <i class="fa-regular fa-circle-user user-icon"></i>
+          {/* <img src="src/assets/Google_Gemini_logo.svg.png" alt="" className="logo-chatWindow"/>
+           */}
+          <p className="logo-main">Talk.</p>
+          {/* <i className="fa-solid fa-circle-user user-icon"  ></i> */}
+          {/* <i className="fa-light fa-circle-user"></i> */}
+          <i class="fa-regular fa-circle-user user-icon"></i>
         </nav>
 
-    
         {/* Chat Messages */}
-        <Chat/>
+        <Chat />
 
         {/* Input Box */}
-        
-        <RingLoader className="loader" color="#fff" loading={loading}></RingLoader>
-        
-        <div className="bottom">
-        <div className="input-box">
-            <input type="text" placeholder="Start a conversation..." className="chat-input"  value={prompt}  onChange={ (e) => setPrompt(e.target.value) } onKeyDown={(e) => e.key==="Enter"?getReply() : ""} />
-            <div className="btn-submit"><i className="send fa-solid fa-paper-plane send-icon" onClick={getReply}></i></div>
-        </div>
 
-        <p className="footer">Talk - Always there to listen.</p>
-        </div>
-        
+        <PulseLoader
+          className="loader"
+          color="#c15f3c"
+          loading={loading}
+        ></PulseLoader>
+        <div className={`bottom ${newChat ? "newChatBottom" : ""}`}>
+          {!newChat && (
+            <div className="sentiscore" onClick={getSentimentScore}>
+              ✨Understand your chat's sentiment
+            </div>
+          )}
 
-        
-    </div>
-  )
+          <div className="input-box">
+            <input
+              type="text"
+              placeholder="Start a conversation..."
+              className="chat-input"
+              value={prompt}
+              onChange={(e) => setPrompt(e.target.value)}
+              onKeyDown={(e) => (e.key === "Enter" ? getReply() : "")}
+            />
+            <div className="btn-submit">
+              <i
+                className="send fa-solid fa-paper-plane send-icon"
+                onClick={getReply}
+              ></i>
+            </div>
+          </div>
+
+          <p className="footer">Talk - Always there to listen.</p>
+        </div>
+      </div>
+    </>
+  );
 }

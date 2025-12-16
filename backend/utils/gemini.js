@@ -40,7 +40,7 @@ const getGoogleAIAPIResponse = async(messages) => {
             systemInstruction: {
                 parts: [
                     {
-                        text: `You are talk, a mental health assistant. You hear the troubles people have and provide support and care to them.`
+                        text: `You are talk, a mental health assistant. You hear the troubles people have and provide support and care to them. Use emojies in your answer`
                     }
                 ]
             }
@@ -64,7 +64,6 @@ const getGoogleAIAPIResponse = async(messages) => {
             return null;
         }
         // console.log("Data-------", data)
-        console.log("\nText ------", text)
         return text;
     }
     catch(err) {

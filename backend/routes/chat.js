@@ -98,7 +98,7 @@ router.post("/chat" , async(req, res) => {
         }
 
         const assistantReply = await getGoogleAIAPIResponse(thread.messages);
-        console.log("Thread.messages -----------" ,thread.messages)
+        
         thread.messages.push({
             role : "assistant",
             content: assistantReply || "No content returned"
@@ -113,6 +113,41 @@ router.post("/chat" , async(req, res) => {
         
     } catch (err) {
         res.status(500).json({error : err.message})
+    }
+})
+
+
+router.post("/predict/:id", async(req, res)=>{
+    const {id} = req.params;
+    
+    let usermsgs = "";
+
+    try{
+        const thread = await Thread.findOne({threadId : id});
+        if(!thread){
+            return res.status(404).json({ error: "Thread not found" });
+        }
+        const userarr = thread.messages.filter((ele) => {
+            if(ele.role==="user"){
+                return ele;
+            }
+        })
+
+        for(let i=0; i<userarr.length ; i++){
+            usermsgs = usermsgs + " " + userarr[i].content}
+
+        const result = await fetch("http://127.0.0.1:8000/predict/", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ text : usermsgs }),
+        })
+
+        const data = await result.json();
+
+        res.json(data);
+    }
+    catch(err){
+        res.json(err)
     }
 })
 
