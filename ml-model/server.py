@@ -39,16 +39,6 @@ support_set = {
         "Hi all. I want finally recover from this shit. I have it already ",
         "Feels weird saying that but I think I am there In a hotel going to get drunk and end it"
     ]
-    # "suicidal": [
-    #     '''
-    #     Every day I feel like I am in constant pain, my mind will not shut off and its this constant discomfort of anxieties and dissatisfaction.
-    #     I do not understand why were expected to stay alive. I want to end it but I am too afraid of it not working and I do not know what else. It does
-    #     not help to hear from the people in my life who do not want me to do it. I wish someone could help because I do not think I can do it but it feels
-    #     unbearable to keep going I want to hear from people who will not talk me out of it
-    #      ''',
-    #     "The struggle to go on gets harder everyday but yet I am still here waiting for something \"magical\" or whatever to make me happy or change my mindset , got a birthday coming up soon other than that I am losing the will to live.. collect money everyday until I die of old age and stress? no thanks brain keeps telling me \"why postpone it, you know you want to do it, why wait\"",
-    #     "Not much to say here. I am tired of returning to this mindset in spite of everything that happens. Maybe it was just a state of mind for a while, but it feels permanent, something I cannot ever free myself from because it is just me now.I have no way of knowing if antidepressants would help. I think I am just afraid of being told it is just my state of mind and being denied the option to try. I think it might be the worry that antidepressants will not even work. Or that the people I love would feel like they were not enough if I had to rely on antidepressants.Either way, probably just going to have a cookout in my car or something, early in the morning when nobody can see. There were always easier ways but there is always a hassle and this seems the most casual of all of them. Thinking about doing it tonight"
-    # ]
 }
 
 # Load SentenceTransformer
