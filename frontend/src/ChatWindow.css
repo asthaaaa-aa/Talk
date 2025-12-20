@@ -134,6 +134,17 @@
 
 .newChatBottom{
     position: relative;
-    bottom: 38%;
+    bottom: 23%;
 
+}
+
+
+.footer{
+    font-family: "Jost", sans-serif;
+    font-weight: 400 !important; 
+}
+
+.ack{
+    cursor: pointer;
+    font-weight: 300;
 }

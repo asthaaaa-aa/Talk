@@ -70,7 +70,7 @@ export default function Sidebar() {
         
 
         <ul className="threadHistory">
-          {allThreads?.map((thread,idx) => <li key={idx} onClick={()=>changeThread(thread.threadId)}>{thread.title}</li>)}
+          {allThreads?.map((thread,idx) => <li key={idx} onClick={()=>changeThread(thread.threadId)}>{`${thread.title}`}</li>)}
         </ul>
     </section>
   )

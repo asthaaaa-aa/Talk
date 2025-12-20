@@ -13,6 +13,7 @@ export default function SentimentBar() {
   return (
     <div className='sentimentBar'>
       <div className="message">
+        
         <p className='main-headings'>🌟 Emotional Well-Being Analysis</p>
 
             Based on your recent messages, our system analyzed your emotional state across four categories.

@@ -58,14 +58,24 @@ p{
 }
 
 .h3-main-heading{
-    font-family: "Forum", serif;
+  font-family: "Forum", serif;
   font-weight: 400;
   font-style: normal;
   font-size: 3rem;
+  text-align: center;
 }
 
 .dot{
     /* color: rgb(247, 160, 129); */
     color: #c15f3c;
     font-size: 100px;
+}
+
+.hero-subheading{
+    font-size: 1.4rem;
+    text-align: center;
+    font-size: 1rem;
+    width: 60%;
+    margin: 0 auto;
+    color: rgb(121, 120, 120);
 }

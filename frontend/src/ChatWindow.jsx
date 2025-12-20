@@ -27,6 +27,7 @@ export default function ChatWindow() {
     setOpenSentiment,
   } = useContext(MyContext);
   const [loading, setLoading] = useState(false);
+  const [ sentimentLoading, setSentimentLoading] = useState(false);
 
   const getReply = async () => {
     const options = {
@@ -74,6 +75,7 @@ export default function ChatWindow() {
   const getSentimentScore = async () => {
     try {
       setOpenSentiment(!openSentiment);
+      setSentimentLoading(true);
       const scores = await fetch(
         `http://localhost:3000/api/predict/${currthreadId}`,
         {
@@ -85,10 +87,12 @@ export default function ChatWindow() {
       // setSentiment(data)
       console.log(data);
       setSentiment(data);
+      
     } catch (e) {
       console.log(e);
       // res.json(e);
     }
+    setSentimentLoading(false);
   };
 
   return (
@@ -101,7 +105,9 @@ export default function ChatWindow() {
           <p className="logo-main">Talk.</p>
           {/* <i className="fa-solid fa-circle-user user-icon"  ></i> */}
           {/* <i className="fa-light fa-circle-user"></i> */}
-          <i class="fa-regular fa-circle-user user-icon"></i>
+          {/* <i class="fa-regular fa-circle-user user-icon"></i> */}
+          {/* <i class="fi fi-rr-user"></i> */}
+          <p className="ack">Made by <b> <a href="https://www.linkedin.com/in/astha-2137a4265/" target="_blank" >this human</a></b></p>
         </nav>
 
         {/* Chat Messages */}
@@ -116,6 +122,7 @@ export default function ChatWindow() {
         ></PulseLoader>
         <div className={`bottom ${newChat ? "newChatBottom" : ""}`}>
           {!newChat && (
+            
             <div className="sentiscore" onClick={getSentimentScore}>
               ✨Understand your chat's sentiment
             </div>
@@ -140,6 +147,8 @@ export default function ChatWindow() {
 
           <p className="footer">Talk - Always there to listen.</p>
         </div>
+
+        {/* <div className="ack"><p>Made by <b>this human</b></p></div> */}
       </div>
     </>
   );
