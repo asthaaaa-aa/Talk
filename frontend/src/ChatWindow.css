@@ -148,3 +148,7 @@
     cursor: pointer;
     font-weight: 300;
 }
+
+.ack i{
+    font-size: 1.1rem;
+}

@@ -64,7 +64,8 @@ export default function Sidebar() {
         {/* <img src="src/assets/sidebarLogo.webp" alt="" className="logo"/> */}
         <button onClick={createNewChat}>
             {/* <i class="fa-solid fa-wand-sparkles"></i> */}
-            <i className="fa-solid fa-plus plus-icon"></i>
+            {/* <i className="fa-solid fa-plus plus-icon"></i> */}
+            <i class="fi fi-ss-head-side-medical"></i>
             New Chat
         </button>
         

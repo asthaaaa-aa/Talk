@@ -102,12 +102,12 @@ export default function ChatWindow() {
         <nav className="chat-window-navbar">
           {/* <img src="src/assets/Google_Gemini_logo.svg.png" alt="" className="logo-chatWindow"/>
            */}
-          <p className="logo-main">Talk.</p>
+          <p className="logo-main"><i class="fi fi-ts-coriander"></i> Talk.</p>
           {/* <i className="fa-solid fa-circle-user user-icon"  ></i> */}
           {/* <i className="fa-light fa-circle-user"></i> */}
           {/* <i class="fa-regular fa-circle-user user-icon"></i> */}
           {/* <i class="fi fi-rr-user"></i> */}
-          <p className="ack">Made by <b> <a href="https://www.linkedin.com/in/astha-2137a4265/" target="_blank" >this human</a></b></p>
+          <p className="ack">Made by <b> <a href="https://www.linkedin.com/in/astha-2137a4265/" target="_blank" >this human  </a> <i class="fi fi-tr-transporter"></i></b></p>
         </nav>
 
         {/* Chat Messages */}

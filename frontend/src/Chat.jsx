@@ -13,7 +13,7 @@ export default function Chat() {
     <>
       
 
-      {newChat && <h3 className="h3-main-heading">Lets talk<span className="dot">.</span>  <div className="hero-subheading">Talk is your personal AI mental health companion. It's always there to hear you and make you feel better. Stay strong.</div></h3>  }
+      {newChat && <div className="h3-main-heading"> <i class="fi fi-ts-coriander"></i> Lets talk<span className="dot">.</span>  <div className="hero-subheading">Talk is your personal AI mental health companion. It's always there to hear you and make you feel better. Stay strong.</div></div>  }
 
       {/* <div style={{textAlign: "center", fontSize: "20px" , color: "#e0e0e0ff"}} >Hi there, lovely soul. Do you have anything to say but dont seem to confide in anyone, <br/> dont worry I'm always there. Just tell me how does it feel.</div> */}
 
